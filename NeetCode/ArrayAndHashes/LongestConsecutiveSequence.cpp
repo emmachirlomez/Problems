@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// O(n) in time and O(n) in memory.
 int longestConsecutive(vector<int>& nums) {
     unordered_set<int> my_set;
     for (auto i : nums)
