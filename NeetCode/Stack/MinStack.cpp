@@ -4,12 +4,10 @@ using namespace std;
 
 class MinStack {
 public:
-    /** initialize your data structure here. */
     stack<int> my_stack;
     stack<int> min_stack;
-    MinStack() {
-        
-    }
+
+    MinStack() {}
     
     void push(int val) {
         my_stack.push(val);
@@ -18,7 +16,7 @@ public:
     }
     
     void pop() {
-        if (my_stack.top() == min_stack.top())
+        if (min_stack.top() == my_stack.top())
             min_stack.pop();
         my_stack.pop();
     }
