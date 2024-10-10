@@ -1,30 +1,35 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool IsSubstring(string s, string original)
+template<class Value>
+class HashTable
 {
-    for (int start = 0; start + s.size() - 1 < original.size(); start++)
+    int mod;
+    vector<int> head;
+    struct Node
     {
-        int ok = true;
-        for (int i = 0; i < s.size(); i++)
-            ok &= (s[i] == original[start + i]);
-        if (ok)
-            return true;
+        Value val;
+        int key;
+        int next;
+    };
+
+    vector<Node> nodes;
+
+public:
+    HashTable(int dim) : mod(dim), head(dim, -1)  {}
+    
+    optional<Value> find(int key) {
+        int poz_node = head[key % mod];
+        for (int i = poz_node; i != -1; i = nodes[i].next) {
+            if (nodes[i].key == key) {
+                return nodes[i].val;
+            }
+        }
+        return {};
     }
-    return false;
-}
+};
 
 int main()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int x, y;
-        cin >> x >> y;
-        if (y < -1)
-            cout << "NO\n";
-        else
-            cout << "YES\n";
-    }
+    int a(10);
 }
